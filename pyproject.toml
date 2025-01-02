@@ -1,0 +1,76 @@
+[tool.poetry]
+name = "languager"
+version = "0.1.0"
+description = ""
+authors = ["Lukáš Klíma <Lukas.klm94@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "5.1.4"
+python-dotenv = "^1.0.1"
+psycopg2-binary = "^2.9.10"
+django-auditlog = "^3.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.1"
+ruff = "^0.4.5"
+mypy = "^1.10.0"
+black = "^24.4.2"
+pre-commit = "^3.7.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.ruff] # https://beta.ruff.rs/docs/settings/
+fix = true
+line-length = 120
+show-fixes = true
+output-format = "full"
+target-version = "py311"
+lint.select = [
+  "B", # flake8-bugbear - bugs and design problems in your code
+  "C4", # flake8-comprehensions - comprehensions instead of for loops where possible
+  "C90", # mccabe - finds complex code blocks in your project
+  "COM", # flake8-commas - checks for missing trailing commas
+  "DJ", # flake8-django - checks for common Django issues and missing migrations in your project
+  "E", # pycodestyle errors - flake8 default errors (pycodestyle)
+  "EM", # flake8-errmsg - checks for common error messages in your project
+  "F", # pyflakes - flake8 default errors (pyflakes)
+  "I", # isort - sorts imports in your project
+  "INP001", # flake8-no-pep420 - checks for PEP 420 violations
+  "ISC", # flake8-implicit-str-concat - checks for implicit string concatenation
+  "N", # pep8-naming - checks for PEP 8 naming conventions
+  "PERF", # perflint - checks for common performance issues in your project
+  "PIE", # flake8-pie - checks for common Python security issues in your project
+  "PTH", # flake8-use-pathlib - checks for common pathlib issues in your project
+  "RET", # flake8-return - checks for common return issues in your project
+  "RSE", # flake8-raise - checks for common raise issues in your project
+  "RUF", # ruff - checks for common issues in your project
+  "S", # flake8-bandit - checks for common security issues in your project
+  "SIM", # flake8-simplify - checks for simplification opportunities in your project
+  "T10", # flake8-debugger - checks for used breakpoints and debuggers
+  "TCH", # flake8-type-checking - checks for common type checking issues in your project
+  "TID", # flake8-tidy-imports - checks for unused imports in your project
+  "UP", # pyupgrade - checks for common Python upgrade issues in your project
+  "W" # pycodestyle warnings - flake8 default warnings (pycodestyle)
+]
+extend-exclude = ["settings", "migrations", "tests", "manage.py"]
+[tool.ruff.extend-per-file-ignores]
+"*" = [
+  "B008" # Do not perform function calls in argument defaults
+]
+"tests/*" = [
+  "S101"  # Use of assert detected (used in tests)
+]
+"migrations/*" = [
+  "INP001", # flake8-no-pep420 - checks for PEP 420 violations
+  "W291",
+  "E501",
+  "RUF012"
+]
+
+[tool.ruff.isort]
+force-single-line = true

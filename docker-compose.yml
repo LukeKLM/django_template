@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:15
+    container_name: languager-db
+    hostname: localhost
+    ports:
+      - "5432:5432"
+    volumes:
+      - "./postgresql/:/var/run/postgresql/"
+    environment:
+      POSTGRES_DB: languager
+      POSTGRES_USER: languager
+      POSTGRES_PASSWORD: languager
+      POSTGRES_HOST: 'localhost'
