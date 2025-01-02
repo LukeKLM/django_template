@@ -1,0 +1,25 @@
+# https://pre-commit.com
+# https://pre-commit.com/hooks
+default_language_version:
+    python: python3.11
+
+repos:
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.2.2
+    hooks:
+      - id: ruff
+        args:
+          - --exit-non-zero-on-fix
+          - --fix
+  - repo: https://github.com/psf/black-pre-commit-mirror
+    rev: 23.7.0
+    hooks:
+      - id: black
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: mixed-line-ending
+        args:
+          - --fix=lf
+      - id: end-of-file-fixer
+      - id: fix-byte-order-marker
