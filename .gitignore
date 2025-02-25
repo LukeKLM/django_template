@@ -172,3 +172,5 @@ cython_debug/
 
 media/
 static-collected/
+
+pg_data/
