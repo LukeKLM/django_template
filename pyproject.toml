@@ -4,6 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Lukáš Klíma <Lukas.klm94@gmail.com>"]
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -23,6 +24,8 @@ pre-commit = "^3.7.1"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.poetry.group.production.dependencies]
+gunicorn = "^23.0.0"
 
 [tool.ruff] # https://beta.ruff.rs/docs/settings/
 fix = true
